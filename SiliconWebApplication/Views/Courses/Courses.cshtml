@@ -1,0 +1,94 @@
+﻿@model CoursesViewModel
+
+
+@{
+    ViewData["Title"] = "Courses";
+}
+<link rel="stylesheet" href="~/css/Courses.css" asp-append-version="true" />
+
+
+ <section class="coursesList">
+    <div class="container">
+        <div class="homeIcon">
+            <img src="~/Images/homeIcon.svg" alt="">
+            <h4 class="gray">Home</h4>
+            <img src="~/Images/rightArrow.svg" alt="">
+            <h4 class="blue">Courses</h4>
+        </div>
+        <div class="courses">
+            <h1>Courses</h1>
+            <div class="searchCourses">
+                <input type="text" placeholder="All categories">
+                <input type="text" placeholder="Search courses">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="chooseCourses">
+    <div class="container">
+        <div class="container-cards">
+            @foreach (var item in Model.CourseModels)
+            {
+
+                <a class="cardCourses" href="@Url.Action("SingleCourse", "SingleCourse", new { courseId = item.Id })">
+                    @if (item.IsBestSeller)
+                    {
+                        <img class="bestSeller" src="~/Images/badge.png" alt="">
+
+                    }
+
+                    <img class="cardImage" src="~/Images/@item.ImageName" alt="">
+                    <img class="courseIcon" src="~/Images/S.svg" alt="">
+
+                    <div class="cardText">
+                        <h5>@item.Title</h5>
+                        <p class="text-s">@item.Author</p>
+                        @if (@item.Discount > 0)
+                        {
+                            <span class="red">$ @item.Price </span>
+                            <span class="gray">$ @item.Discount </span>
+
+
+                        }
+                        else
+                        {
+                            <span class="blue">$ @item.Price</span>
+                        }
+
+                        <hr>
+                        <div class="watch">
+
+                            <div class="hours">
+                                <p class="text-s"><i class="fa-regular fa-clock"></i> @item.Hours hours</p>
+                            </div>
+                            <div class="likes">
+                                <img src="~/Images/like.svg" alt="">
+                                <span>@($"{item.LikesNumbers}%")</span>
+                                <span class="text-s">(@($"{item.LikesProcent}k"))</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+
+        </div>
+    </div>
+
+
+</section>
+<div class="pagination"><img src="~/Images/pagination.svg" alt=""></div>
+
+<section class="container">
+    <div class="workwithUs">
+        <div class="work1">
+            <h4 class="text-lead">Ready to get started?</h4>
+            <h1>Take Your <span>Skills</span> to the Next Level</h1>
+            <button class="btn-theme-s">Work with us</button>
+        </div>
+        <div class="work1">
+            <img src="~/Images/WorkIllustration.svg" alt="">
+        </div>
+    </div>
+</section> 
+
+
