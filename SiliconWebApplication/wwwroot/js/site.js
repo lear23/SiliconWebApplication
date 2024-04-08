@@ -25,28 +25,6 @@ window.addEventListener("resize", () => {
 /* -------Dark Mode & Light Mode-------------------*/
 
 
-//document.addEventListener('DOMContentLoaded', function () {
-
-//    let sw = document.querySelector('#switch-mode')
-
-//    sw.addEventListener('change', function () {
-
-//        let theme = this.checked ? "dark" : "light"
-
-//        fetch(`/sitesettings/changetheme?mode=${theme}`)
-//            .then(res => {
-//                if (res.ok) {
-//                    window.location.reload()
-//                }
-//                else {
-//                    console.log('somenthing')
-//                }
-
-//            })
-
-//    })
-//} )
-
 document.addEventListener('DOMContentLoaded', function () {
     let sw = document.querySelector('#switch-mode');
 
@@ -72,3 +50,18 @@ document.addEventListener('DOMContentLoaded', function () {
         switchMode.checked = true;
     }
 });
+
+/*----------------------------SavedCourse-----------------------------------*/
+
+
+
+//document.addEventListener("DOMContentLoaded", function () {
+//    const courseIcon = document.querySelector(".courseIcon");
+
+//    if (courseIcon) {
+//        courseIcon.addEventListener("click", function () {
+//            // Redirigir a otra página al hacer clic en la imagen
+//            window.location.href = "/SavedCourses/SavedCourses";
+//        });
+//    }
+//});

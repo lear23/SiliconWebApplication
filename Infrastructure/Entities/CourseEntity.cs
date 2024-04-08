@@ -24,9 +24,9 @@ public class CourseEntity
     public bool IsBestSeller { get; set; }
 
     [Column(TypeName = "decimal(18,2)")]
-    public decimal LikesNumbers { get; set; }
+    public string? LikesNumbers { get; set; }
 
     [Column(TypeName = "decimal(18,2)")]
-    public decimal LikesProcent { get; set; }
+    public string? LikesProcent { get; set; }
 
 }

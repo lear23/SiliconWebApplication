@@ -30,7 +30,7 @@
             @foreach (var item in Model.CourseModels)
             {
 
-                <a class="cardCourses" href="@Url.Action("SingleCourse", "SingleCourse", new { courseId = item.Id })">
+                <div class="cardCourses" >
                     @if (item.IsBestSeller)
                     {
                         <img class="bestSeller" src="~/Images/badge.png" alt="">
@@ -38,10 +38,18 @@
                     }
 
                     <img class="cardImage" src="~/Images/@item.ImageName" alt="">
-                    <img class="courseIcon" src="~/Images/S.svg" alt="">
+
+                    <a class="courseIcon" href="@Url.Action("SavedCourses", "SavedCourses", new { courseId = item.Id })">
+                        <img  src="~/Images/S.svg" alt="">
+                    </a>
+                   
 
                     <div class="cardText">
-                        <h5>@item.Title</h5>
+
+                        <a href="@Url.Action("SingleCourse", "SingleCourse", new { courseId = item.Id })">
+                            <h5>@item.Title</h5>
+                        </a>
+                        
                         <p class="text-s">@item.Author</p>
                         @if (@item.Discount > 0)
                         {
@@ -68,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             }
 
         </div>
