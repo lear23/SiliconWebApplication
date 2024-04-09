@@ -9,6 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+builder.Services.AddSession(x =>
+{
+    x.IdleTimeout = TimeSpan.FromMinutes(20);
+    x.Cookie.IsEssential = true;
+    x.Cookie.HttpOnly = true;
+});
 
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 
@@ -51,12 +57,15 @@ builder.Services.AddAuthentication()
 builder.Services.AddScoped<AddressServices>();
 
 
+
 var app = builder.Build();
 app.UseHsts();
-app.UseStatusCodePagesWithReExecute("/Home/Error404", "?satusCode={0}");
+app.UseStatusCodePagesWithReExecute("/Home/Error404", "?statusCode={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",

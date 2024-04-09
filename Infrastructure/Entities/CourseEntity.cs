@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Entities;
 
 public class CourseEntity
 {
-
+    [Key]
     public string Id { get; set; } = Guid.NewGuid().ToString();
+
 
     public string Title { get; set; } = null!;
 
@@ -23,10 +25,14 @@ public class CourseEntity
 
     public bool IsBestSeller { get; set; }
 
-    [Column(TypeName = "decimal(18,2)")]
     public string? LikesNumbers { get; set; }
 
-    [Column(TypeName = "decimal(18,2)")]
+   
     public string? LikesProcent { get; set; }
+
+
+
+    public string UserId { get; set; } = null!;
+    public UserEntity User { get; set; } = null!;
 
 }

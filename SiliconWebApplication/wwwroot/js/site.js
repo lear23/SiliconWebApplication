@@ -51,17 +51,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-/*----------------------------SavedCourse-----------------------------------*/
+/*----------------------------TOKEN-----------------------------------*/
 
 
 
-//document.addEventListener("DOMContentLoaded", function () {
-//    const courseIcon = document.querySelector(".courseIcon");
+//Hämta våra token
 
-//    if (courseIcon) {
-//        courseIcon.addEventListener("click", function () {
-//            // Redirigir a otra página al hacer clic en la imagen
-//            window.location.href = "/SavedCourses/SavedCourses";
-//        });
-//    }
-//});
+
+fetch('https://localhost:7086/api/auth', {
+    method: 'Post'
+
+})
+    .then(res => res.text())
+    .then(token => {
+        sessionStorage.setItem('accesToken', token)
+    })
+
+
+
+//Hämta det som man vill ha och sätta våra accestoken
+fetch('https://localhost:7086/api/course', {
+    method: 'get',
+    headers: {
+        'authorization': `Bearer ${sessionStorage.getItem('accesToken')}`
+    }
+})
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+    })

@@ -17,7 +17,8 @@
                     <a  asp-fragment="_Showcase.cshtml" asp-action="Home" class="menu-link">Overview</a>
                     <a asp-fragment="_Features.cshtml" asp-action="Home" asp-controller="Home" class="menu-link">Features</a>
                     <a asp-action="Courses" asp-controller="Courses" class="menu-link">Courses</a>
-                    <a href="contact.html" class="menu-link">Contact</a>
+                    <a asp-action="Contact" asp-controller="contact" class="menu-link">Contact</a>
+               
                 </nav>
             </div>
 
@@ -47,7 +48,7 @@ else
                     else
                     {
                         <a asp-action="Home" asp-controller="Home" class="menu-link">Overview</a>
-                        <a asp-action="Courses" asp-controller="Courses" class="menu-link">Courses</a>
+                        <a asp-action="Courses" asp-controller="Courses" class="menu-link">Features</a>
                         <a asp-controller="Contact" asp-action="Contact" class="menu-link">Contact</a>
                     }
                 </nav>

@@ -2,11 +2,24 @@
 using Newtonsoft.Json;
 using System.Text;
 using SiliconWebApplication.Dtos;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SiliconWebApplication.Controllers;
-
+[Authorize]
 public class SubscriberController : Controller
+
 {
+   
+
+    private readonly HttpClient _httpClient;
+
+    public SubscriberController(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+    }
+
     public IActionResult Subscriber()
     {
         return View();
@@ -14,8 +27,10 @@ public class SubscriberController : Controller
 
 
     [HttpPost]
+   
     public async Task<IActionResult> Subscriber(SubscriberDto model)
     {
+
         if (ModelState.IsValid)
         {
             try

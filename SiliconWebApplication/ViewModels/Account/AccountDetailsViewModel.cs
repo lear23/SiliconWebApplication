@@ -1,5 +1,7 @@
 ﻿
 
+using SiliconWebApplication.ViewModels.Courses;
+
 namespace SiliconWebApplication.ViewModels.Account
 {
     public class AccountDetailsViewModel
@@ -8,8 +10,7 @@ namespace SiliconWebApplication.ViewModels.Account
         public BasicInfoViewModel BasicInfo { get; set; } = null!;
         public AddressViewModel AddressModel { get; set; } = null!;
         public List<SavedCourseViewModel> SavedCourses { get; set; } = [];
-
-
+    
 
     }
 }

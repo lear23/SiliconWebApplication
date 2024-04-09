@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class local : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,8 +65,8 @@ namespace Infrastructure.Migrations
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Hours = table.Column<int>(type: "int", nullable: false),
                     IsBestSeller = table.Column<bool>(type: "bit", nullable: false),
-                    LikesNumbers = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    LikesProcent = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    LikesNumbers = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LikesProcent = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -74,7 +74,7 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subscrivers",
+                name: "Subscribers",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -82,7 +82,7 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subscrivers", x => x.Id);
+                    table.PrimaryKey("PK_Subscribers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -284,7 +284,7 @@ namespace Infrastructure.Migrations
                 name: "Courses");
 
             migrationBuilder.DropTable(
-                name: "Subscrivers");
+                name: "Subscribers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

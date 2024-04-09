@@ -24,7 +24,7 @@
         </div>
     </div>
 </section>
-<section class="chooseCourses">
+<section class="choosen-Courses">
     <div class="container">
         <div class="container-cards">
             @foreach (var item in Model.CourseModels)
@@ -39,9 +39,11 @@
 
                     <img class="cardImage" src="~/Images/@item.ImageName" alt="">
 
-                    <a class="courseIcon" href="@Url.Action("SavedCourses", "SavedCourses", new { courseId = item.Id })">
-                        <img  src="~/Images/S.svg" alt="">
-                    </a>
+                    <form  method="post" action="@Url.Action("SaveCourse", "SavedCourses")">
+                        <input type="hidden" name="courseId" value="@item.Id" />
+                        <button class="courseIcon" type="submit"><img src="~/Images/S.svg" alt=""></button>
+                    </form>
+
                    
 
                     <div class="cardText">

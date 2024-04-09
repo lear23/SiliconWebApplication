@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240406113532_init")]
-    partial class init
+    [Migration("20240407141959_AddUserIdToCourses")]
+    partial class AddUserIdToCourses
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -79,11 +79,11 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsBestSeller")
                         .HasColumnType("bit");
 
-                    b.Property<decimal>("LikesNumbers")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("LikesNumbers")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("LikesProcent")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<string>("LikesProcent")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -92,7 +92,13 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Courses");
                 });
@@ -108,7 +114,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subscrivers");
+                    b.ToTable("Subscribers");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
@@ -326,6 +332,17 @@ namespace Infrastructure.Migrations
                         .WithMany("Addresses")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.CourseEntity", b =>
+                {
+                    b.HasOne("Infrastructure.Entities.UserEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");

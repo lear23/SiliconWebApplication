@@ -18,8 +18,8 @@ public class CourseModel
 
     public bool IsBestSeller { get; set; }
 
-    public decimal LikesNumbers { get; set; }
+    public string? LikesNumbers { get; set; }
 
-    public decimal LikesProcent { get; set; }
+    public string? LikesProcent { get; set; }
 
 }

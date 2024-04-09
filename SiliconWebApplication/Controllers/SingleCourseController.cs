@@ -6,29 +6,30 @@ namespace SiliconWebApplication.Controllers;
 
 public class SingleCourseController : Controller
 {
-        private readonly HttpClient _http;
+    private readonly HttpClient _http;
 
-        public SingleCourseController(HttpClient httpClient)
+    public SingleCourseController(HttpClient httpClient)
+    {
+        _http = httpClient;
+    }
+
+    public async Task<IActionResult> SingleCourse(string courseId)
+    {
+        var viewModel = new CoursesViewModel();
+
+        var response = await _http.GetAsync($"https://localhost:7086/api/course/{courseId}");
+
+        if (response.IsSuccessStatusCode)
         {
-            _http = httpClient;
+            var course = JsonConvert.DeserializeObject<CourseModel>(await response.Content.ReadAsStringAsync());
+            viewModel.CourseModels = [course];
+            return View(viewModel);
         }
-
-        public async Task<IActionResult> SingleCourse(string courseId)
+        else
         {
-            var viewModel = new CoursesViewModel();
-
-            var response = await _http.GetAsync($"https://localhost:7086/api/course/{courseId}");
-
-            if (response.IsSuccessStatusCode)
-            {
-                var course = JsonConvert.DeserializeObject<CourseModel>(await response.Content.ReadAsStringAsync());
-                viewModel.CourseModels = [course]; 
-                return View(viewModel);
-            }
-            else
-            {
-                return View("Error");
-            }
+            return View("Error404");
         }
-   
+    }
+
 }
+

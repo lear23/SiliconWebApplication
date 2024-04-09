@@ -59,6 +59,8 @@
 
 .courseIcon {
     position: absolute;
+    border: none;
+    background-color: transparent;
     right: 20px;
     top: 40px;
 }

@@ -1,9 +1,9 @@
-﻿namespace SiliconWebApplication.ViewModels.Account
+﻿namespace SiliconWebApplication.ViewModels.Courses
 {
     public class SavedCourseViewModel
     {
 
-        public string Title { get; set; } = null!; 
+        public string Title { get; set; } = null!;
         public string Author { get; set; } = null!;
         public string ImageName { get; set; } = null!;
         public decimal Price { get; set; }
