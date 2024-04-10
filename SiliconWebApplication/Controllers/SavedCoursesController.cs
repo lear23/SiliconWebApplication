@@ -52,6 +52,7 @@ namespace SiliconWebApp.Controllers
                     var savedCourses = await _dbContext.Courses.ToListAsync();
                     viewModel.SavedCourses = savedCourses.Select(course => new SavedCourseViewModel
                     {
+                        Id = course.Id,
                         Title = course.Title,
                         Author = course.Author!,
                         ImageName = course.ImageName!,
@@ -100,6 +101,7 @@ namespace SiliconWebApp.Controllers
 
                         var courseEntity = new CourseEntity
                         {
+                            Id= course.Id,
                             Title = course!.Title,
                             Author = course.Author,
                             ImageName = course.ImageName,
@@ -156,9 +158,42 @@ namespace SiliconWebApp.Controllers
             }
             catch (Exception ex)
             {
+                return View("Error");
+            }
+        }
+
+
+        [HttpPost]
+        [Route("/SavedCourses/Delete/{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                var courseToDelete = await _dbContext.Courses.FirstOrDefaultAsync(course => course.Id == id && course.UserId == user.Id);
+
+                if (courseToDelete == null)
+                {
+                    return NotFound();
+                }
+
+                _dbContext.Courses.Remove(courseToDelete);
+                await _dbContext.SaveChangesAsync();
+
+                return RedirectToAction("SavedCourses", "SavedCourses");
+            }
+            catch (Exception ex)
+            {
                 return View("Error404");
             }
         }
+
+
         #endregion
 
 

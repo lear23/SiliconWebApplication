@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="~/css/SavedCourses.css" asp-append-version="true" />
 
+
 <main class="container">
     <section class="saved">
         <partial name="~/Views/Shared/AsideAccount/AsideAccount.cshtml" />
@@ -31,9 +32,20 @@
 
                         }
                         <img class="cardImage" src="~/Images/@item.ImageName" alt="">
-                        <a href="">
-                            <img class="courseIcon" src="~/Images/S.svg" alt="">
-                        </a>
+
+                        <form method="post" action="@Url.Action("Delete", "SavedCourses", new { id = item.Id })">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button class="courseIcon" type="submit"><img src="~/Images/S.svg" alt=""></button>
+                        </form>
+                        
+
+
+                        @*  <form method="post" action="/SavedCourses/Delete/@(item.Id)">
+                            <button type="submit">
+                                <img class="courseIcon" src="~/Images/S.svg" alt="">
+                            </button>
+                        </form> *@
+                     
                         <div class="cardText">
                             <h5>@item.Title</h5>
                             <p class="text-s">@item.Author</p>
@@ -59,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                }
+                } 
             </div>
         </div>
     </section>
