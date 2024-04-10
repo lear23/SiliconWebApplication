@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -12,6 +13,23 @@ namespace SiliconWebApplication.Controllers;
 public class CoursesController(HttpClient httpClient) : Controller
 {
     private readonly HttpClient _httpClient = httpClient;
+
+    //[Authorize]
+    //public async Task<IActionResult> Courses()
+    //{
+    //    var viewModel = new CoursesViewModel();
+    //    var response = await _httpClient.GetAsync("https://localhost:7086/api/Course");
+
+    //    if (response.IsSuccessStatusCode)
+    //    {
+    //        viewModel.CourseModels = await response.Content.ReadAsAsync<IEnumerable<CourseModel>>();
+    //    }
+
+    //    return View(viewModel);
+    //}
+
+
+
 
     [Authorize]
     public async Task<IActionResult> Courses()

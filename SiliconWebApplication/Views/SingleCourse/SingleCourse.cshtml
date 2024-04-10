@@ -6,7 +6,9 @@
 }   
 <link rel="stylesheet" href="~/css/SingleCourse.css" asp-append-version="true" />
 
-<section class="courseImage" style="background-image: url('~/wwwroot/Images/@Model.CourseModels.FirstOrDefault()?.ImageName')">
+
+<section class="courseImage" style="background-image: url('/Images/@Model.CourseModels.FirstOrDefault()?.ImageName')">
+
 
         <div class="container">
             <div class="line1">
@@ -38,8 +40,7 @@
                 </div>
 
             </div>
-        </div>
-    
+        </div>    
 
     </section>
 

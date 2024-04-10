@@ -17,10 +17,33 @@
         </div>
         <div class="courses">
             <h1>Courses</h1>
+@* 
             <div class="searchCourses">
                 <input type="text" placeholder="All categories">
                 <input type="text" placeholder="Search courses">
-            </div>
+            </div> *@
+           
+            <form>
+                <div class="searchCourses">
+
+                    <input id="searchQuery" name="searchQuery" type="text" placeholder="Search courses">
+
+
+                    <div class="dropdown">                    
+                        <input class="dropbtn" id="Service" name="Service" placeholder="All categories" required>
+                        <div class="dropdown-content">
+                            <a href="#">Frontend Development</a>
+                            <a href="#">App Development</a>
+                            <a href="#">Python</a>
+                            <a href="#">HTML & CSS</a>
+                            <a href="#">Game Development</a>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+           
+
         </div>
     </div>
 </section>
@@ -42,9 +65,7 @@
                     <form  method="post" action="@Url.Action("SaveCourse", "SavedCourses")">
                         <input type="hidden" name="courseId" value="@item.Id" />
                         <button class="courseIcon" type="submit"><img src="~/Images/S.svg" alt=""></button>
-                    </form>
-
-                   
+                    </form>                   
 
                     <div class="cardText">
 
