@@ -11,9 +11,9 @@ public class CourseService(HttpClient http, IConfiguration config)
     private readonly IConfiguration _config = config;
 
 
-    public async Task<IEnumerable<CourseModel>> GetCourseAsync(string category = "")
+    public async Task<IEnumerable<CourseModel>> GetCourseAsync(string category = "", string searchQuery = "")
     {
-        var response = await _http.GetAsync($"{_config["ApiUris:Courses"]}?category={category}");
+        var response = await _http.GetAsync($"{_config["ApiUris:Courses"]}?category={Uri.UnescapeDataString(category)}&searchQuery={Uri.UnescapeDataString(searchQuery)}");
         if (response.IsSuccessStatusCode)
         {
             var result = JsonConvert.DeserializeObject<CourseResult>(await response.Content.ReadAsStringAsync());

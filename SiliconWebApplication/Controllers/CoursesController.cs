@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SiliconWebApplication.ViewModels.Courses;
 
@@ -13,14 +14,14 @@ public class CoursesController(CategoryService service, CourseService courseServ
 
 
     //[Authorize]
-    public async Task<IActionResult> Courses(string category ="")
+    public async Task<IActionResult> Courses(string category ="", string searchQuery = "")
     {
 
 
         var viewModel = new CoursesViewModel
         {
             Category = await _service.GetCategoriesAsync(),
-            CourseModels = await _courseService.GetCourseAsync(category),
+            CourseModels = await _courseService.GetCourseAsync(category, searchQuery),
         };
 
 

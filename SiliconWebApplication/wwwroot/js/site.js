@@ -90,8 +90,13 @@ fetch('https://localhost:7086/api/course', {
 //----------------------- ALL CATEGORIES--------------------
 
 
+
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     select()
+    searchQuery()
 })
 
 function select() {
@@ -118,10 +123,28 @@ function select() {
     } catch { }
 }
 
+
+function searchQuery() {
+    try {
+
+        document.querySelector('#searchQuery').addEventListener('keyup', function () {
+           
+            updateCourseByFilter(value)
+
+        })
+
+    } catch { }
+}
+
+
+
+
+
 function updateCourseByFilter() {
     const category = document.querySelector('.select .selected').getAttribute('data-value') || 'all'
-  
-     const url = `/courses/courses?category=${encodeURIComponent(category)}`
+    const searchQuery = document.querySelector('#searchQuery').value 
+
+    const url = `/courses/courses?category=${encodeURIComponent(category)}&searchQuery=${encodeURIComponent(searchQuery)}`
 
 
     fetch(url)

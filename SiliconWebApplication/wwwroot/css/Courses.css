@@ -144,17 +144,19 @@
         }
 
 .input-search-group {
-   /* position:absolute;*/
-    display: inline-flex; 
+    position: relative;
+    display: inline-flex;
     align-items: center;
-   
 }
-    /*.input-search-group i {*/
-     /*  position:relative;*/
-    /*}*/
+
     .input-search-group input {
         flex: 1;
-        margin-left: 10px;
+        padding-right: 30px; 
+    }
+
+    .input-search-group i {
+        position: absolute;
+        right: 15px; 
     }
 /*---------------------------------------------------*/
 .cardCourses {
@@ -167,7 +169,7 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    /* z-index: 0;*/
+
 }
     .cardCourses:hover {
         transform: scale(1.05);
