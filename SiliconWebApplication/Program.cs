@@ -1,14 +1,15 @@
 using Infrastructure.Contexts;
 using Infrastructure.Entities;
-using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
-using System;
+using SiliconWebApplication.Configurations;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+builder.Services.RegisterServices(builder.Configuration);
 builder.Services.AddSession(x =>
 {
     x.IdleTimeout = TimeSpan.FromMinutes(20);
@@ -54,7 +55,7 @@ builder.Services.AddAuthentication()
         options.ClientId = "95356781449-2furd7h5pknuvq0gd3klb59ok6fc28ah.apps.googleusercontent.com";
         options.ClientSecret = "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";
     });
-builder.Services.AddScoped<AddressServices>();
+
 
 
 

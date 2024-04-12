@@ -1,55 +1,77 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Http;
+﻿using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using SiliconWebApplication.ViewModels.Courses;
-using System.Net.Http.Headers;
+
 
 namespace SiliconWebApplication.Controllers;
 
 
-
-public class CoursesController(HttpClient httpClient) : Controller
+public class CoursesController(CategoryService service, CourseService courseService) : Controller
 {
-    private readonly HttpClient _httpClient = httpClient;
+    private readonly CategoryService _service = service;
+    private readonly CourseService _courseService = courseService;
+
 
     //[Authorize]
-    //public async Task<IActionResult> Courses()
-    //{
-    //    var viewModel = new CoursesViewModel();
-    //    var response = await _httpClient.GetAsync("https://localhost:7086/api/Course");
-
-    //    if (response.IsSuccessStatusCode)
-    //    {
-    //        viewModel.CourseModels = await response.Content.ReadAsAsync<IEnumerable<CourseModel>>();
-    //    }
-
-    //    return View(viewModel);
-    //}
-
-
-
-
-    [Authorize]
-    public async Task<IActionResult> Courses()
+    public async Task<IActionResult> Courses(string category ="")
     {
 
 
-        var viewModel = new CoursesViewModel();
-
-        var response = await _httpClient.GetAsync("https://localhost:7086/api/Course");
-
-        if (response.IsSuccessStatusCode)
+        var viewModel = new CoursesViewModel
         {
-            viewModel.CourseModels = JsonConvert.DeserializeObject<IEnumerable<CourseModel>>(await response.Content.ReadAsStringAsync())!;
-        }
+            Category = await _service.GetCategoriesAsync(),
+            CourseModels = await _courseService.GetCourseAsync(category),
+        };
+
 
         return View(viewModel);
     }
+
+
 }
 
 
+
+
+
+//-------------DEN HÄR FUNKAR OCKSÅ ---------
+
+//    [Authorize]
+//    public async Task<IActionResult> Courses()
+//    {
+
+
+//        var viewModel = new CoursesViewModel();
+
+//        var response = await _httpClient.GetAsync("https://localhost:7086/api/Course");
+
+//        if (response.IsSuccessStatusCode)
+//        {
+//            viewModel.CourseModels = JsonConvert.DeserializeObject<IEnumerable<CourseModel>>(await response.Content.ReadAsStringAsync())!;
+//        }
+
+//        return View(viewModel);
+//    }
+
+
+
+
+
+
+
+//[Authorize]
+//public async Task<IActionResult> Courses()
+//{
+//    var viewModel = new CoursesViewModel();
+//    var response = await _httpClient.GetAsync("https://localhost:7086/api/Course");
+
+//    if (response.IsSuccessStatusCode)
+//    {
+//        viewModel.CourseModels = await response.Content.ReadAsAsync<IEnumerable<CourseModel>>();
+//    }
+
+//    return View(viewModel);
+//}
 
 
 

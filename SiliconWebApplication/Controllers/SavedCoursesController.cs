@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Infrastructure.Contexts;
 using SiliconWebApplication.Dtos;
 using Microsoft.AspNetCore.Authorization;
+using Infrastructure.Models;
 
 namespace SiliconWebApp.Controllers
 {

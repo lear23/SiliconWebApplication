@@ -1,27 +1,32 @@
-﻿const nav = document.querySelector("#nav");
-const abrir = document.querySelector("#abrir");
-const cerrar = document.querySelector("#cerrar");
+﻿
+document.addEventListener("DOMContentLoaded", function () {
+    const nav = document.querySelector("#nav");
+    const abrir = document.querySelector("#abrir");
+    const cerrar = document.querySelector("#cerrar");
 
-abrir.addEventListener("click", () => {
-    nav.classList.add("visible");
-    abrir.style.display = "none";
-    cerrar.style.display = "block";
-});
-
-cerrar.addEventListener("click", () => {
-    nav.classList.remove("visible");
-    abrir.style.display = "block";
-    cerrar.style.display = "none";
-});
-window.addEventListener("resize", () => {
-    if (window.innerWidth >= 992) {
+    abrir.addEventListener("click", () => {
+        nav.classList.add("visible");
         abrir.style.display = "none";
+        cerrar.style.display = "block";
+    });
+
+    cerrar.addEventListener("click", () => {
         nav.classList.remove("visible");
-        cerrar.style.display = "none";
-    } else {
         abrir.style.display = "block";
-    }
+        cerrar.style.display = "none";
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 992) {
+            abrir.style.display = "none";
+            nav.classList.remove("visible");
+            cerrar.style.display = "none";
+        } else {
+            abrir.style.display = "block";
+        }
+    });
 });
+
 /* -------Dark Mode & Light Mode-------------------*/
 
 
@@ -80,3 +85,51 @@ fetch('https://localhost:7086/api/course', {
     .then(data => {
         console.log(data)
     })
+
+
+//----------------------- ALL CATEGORIES--------------------
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    select()
+})
+
+function select() {
+    try {
+        let select = document.querySelector('.select')
+        let selected = select.querySelector('.selected')
+        let selectOptions = select.querySelector('.select-options')
+
+        selected.addEventListener('click', function () {
+            selectOptions.style.display = (selectOptions.style.display === 'block') ? 'none' : 'block'
+        }) 
+
+        let options = selectOptions.querySelectorAll('.option')
+        options.forEach(function (option) {
+            option.addEventListener('click', function () {
+                selected.innerHTML = this.textContent
+                selectOptions.style.display = 'none'
+                let category = this.getAttribute('data-value')
+                selected.setAttribute('data-value', category)
+                updateCourseByFilter()
+            })
+        })
+
+    } catch { }
+}
+
+function updateCourseByFilter() {
+    const category = document.querySelector('.select .selected').getAttribute('data-value') || 'all'
+  
+     const url = `/courses/courses?category=${encodeURIComponent(category)}`
+
+
+    fetch(url)
+        .then(res => res.text())
+        .then(data => {
+            const parser = new DOMParser()
+            const dom = parser.parseFromString(data, 'text/html')
+            document.querySelector('.items').innerHTML = dom.querySelector('.items').innerHTML
+        })
+}
+

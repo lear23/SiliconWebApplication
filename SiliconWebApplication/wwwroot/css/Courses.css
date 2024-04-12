@@ -40,6 +40,9 @@
     border-radius: 8px;
     padding: 8px 32px;
 }
+#searchQuery {
+    margin: 0;
+}
 
 @media (max-width: 792px) {
     .courses input {
@@ -50,7 +53,7 @@
     }
 }
 
-.container-cards {
+.items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
@@ -61,14 +64,14 @@
 }
 
 @media (max-width: 1400px) {
-    .container-cards {
+    .items {
         grid-template-columns: repeat(3, minmax(300px, 1fr));
         max-width: 1200px;
     }
 }
 
 @media (max-width: 1200px) {
-    .container-cards {
+    .items {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -81,7 +84,7 @@
 }
 
 @media (max-width: 997px) {
-    .container-cards {
+    .items{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 20px;
@@ -93,6 +96,67 @@
     }
 }
 
+/*---------------------------------------------------*/
+
+.select {
+    position: relative;
+    display: inline-flex;
+    gap: 20px;
+    width: auto;
+}
+
+    .select .selected {
+        display: inline-block;
+        padding: 8px 16px; /* ajusta el relleno para que el elemento seleccionado sea más ancho */
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        cursor: pointer;
+        min-width: 150px; /* ajusta el ancho mínimo del elemento seleccionado */
+    }
+
+        .select .selected:hover {
+            background-color: #f0f0f0;
+        }
+
+    .select.active .select-options {
+        display: block;
+    }
+
+    .select .select-options {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 100%;
+        z-index: 1;
+        top: 100%;
+        left: 0;
+    }
+
+    .select .option {
+        padding: 5px;
+        cursor: pointer;
+    }
+
+        .select .option:hover {
+            background-color: #f0f0f0;
+        }
+
+.input-search-group {
+   /* position:absolute;*/
+    display: inline-flex; 
+    align-items: center;
+   
+}
+    /*.input-search-group i {*/
+     /*  position:relative;*/
+    /*}*/
+    .input-search-group input {
+        flex: 1;
+        margin-left: 10px;
+    }
+/*---------------------------------------------------*/
 .cardCourses {
     display: flex;
     flex-direction: column;
@@ -192,7 +256,7 @@
     border: 2px solid rgb(238, 238, 238);
     padding: 10px;
     margin-bottom: 20px;
-    /* line-height: 160%;
+   /*  line-height: 160%;
     font-weight: 400;
     color: #565973;
     font-family: "Manrope", sans-serif;
@@ -212,6 +276,7 @@
     position: absolute;
     background-color: #fff;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding:20px;
     z-index: 1;
 }
 
