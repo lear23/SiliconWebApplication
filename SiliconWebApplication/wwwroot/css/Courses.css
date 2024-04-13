@@ -205,18 +205,38 @@
     gap: 40px;
 }
 
+/*-----PAGINATION-------*/
 .pagination {
     display: flex;
     justify-content: center;
-    margin: 50px;
+    margin: 50px 0;
 }
+
+    .pagination .number {
+        margin: 0 5px;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .pagination .number.active {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+
+
 
 .workwithUs {
     background-color: #eff0fc;
     display: flex;
     justify-content:center;
     align-items: center;
-    margin-bottom: 70px;
+    margin: 70px 0px;
     padding: 60px 120px;   
     border-radius: 8px;
 }

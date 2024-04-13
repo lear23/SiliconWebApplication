@@ -43,10 +43,10 @@
         </div>
 
 
-    </div>
   
-            <div class="items">
-                @foreach (var item in Model.CourseModels!)
+         <div class="items">
+
+                @foreach (var item in Model.CourseModel!)
                 {
 
                     <div class="cardCourses">
@@ -98,11 +98,50 @@
                     </div>
                 }
 
-            </div>
-     
+
+        </div>
+     </div>
+
+    @if (Model.pagination != null && Model.pagination.TotalPages > 1)
+    {
+        <div class="pagination">
+            @for (int i = 1; i <= Model.pagination.TotalPages; i++)
+            {
+                if (i == Model.pagination.CurrentPage)
+                {
+                    <span class="number active">@i</span>
+                }
+                else
+                {
+                    <a class="number" href="@Url.Action("Courses", new { pageNumber = i, pageSize = Model.pagination.PageSize })">@i</a>
+                }
+            }
+        </div>
+    }
+
+
+  @*   @if (Model.pagination != null && Model.pagination.TotalPages > 1)
+    {
+        <div class="pagination">
+
+            @for (int i = 1; i <= Model.pagination.TotalPages; i++)
+            {
+                if (i == Model.pagination.CurrentPage)
+                {
+                    <span class="number active" href="@Url.Action("courses", new {pageNumber = i, pageSize = Model.pagination.PageSize })">@i</span>
+                }
+                else
+                {
+                    <a class="number"></a>
+                }
+            }
+
+        </div>
+    } *@
+   
+
 </section>
 
-<div class="pagination"><img src="~/Images/pagination.svg" alt=""></div>
 
 <section class="container">
     <div class="workwithUs">

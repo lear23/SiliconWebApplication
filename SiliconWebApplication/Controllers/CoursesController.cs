@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services;
+﻿using Infrastructure.Models;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SiliconWebApplication.ViewModels.Courses;
@@ -14,14 +15,23 @@ public class CoursesController(CategoryService service, CourseService courseServ
 
 
     //[Authorize]
-    public async Task<IActionResult> Courses(string category ="", string searchQuery = "")
+    public async Task<IActionResult> Courses(string category ="", string searchQuery = "",int pageNumber = 1, int pageSize = 6)
     {
+        var courseResult = await _courseService.GetCourseAsync(category, searchQuery, pageNumber, pageSize);
 
 
-        var viewModel = new CoursesViewModel
+         var viewModel = new CoursesViewModel
         {
             Category = await _service.GetCategoriesAsync(),
-            CourseModels = await _courseService.GetCourseAsync(category, searchQuery),
+            CourseModel = courseResult.Courses,
+            pagination = new Pagination
+            {
+                PageSize = pageSize,
+                CurrentPage = pageNumber,
+                TotalPages = courseResult.TotalPages,
+                TotalItems = courseResult.TotalItems
+                
+            }
         };
 
 
@@ -31,64 +41,3 @@ public class CoursesController(CategoryService service, CourseService courseServ
 
 }
 
-
-
-
-
-//-------------DEN HÄR FUNKAR OCKSÅ ---------
-
-//    [Authorize]
-//    public async Task<IActionResult> Courses()
-//    {
-
-
-//        var viewModel = new CoursesViewModel();
-
-//        var response = await _httpClient.GetAsync("https://localhost:7086/api/Course");
-
-//        if (response.IsSuccessStatusCode)
-//        {
-//            viewModel.CourseModels = JsonConvert.DeserializeObject<IEnumerable<CourseModel>>(await response.Content.ReadAsStringAsync())!;
-//        }
-
-//        return View(viewModel);
-//    }
-
-
-
-
-
-
-
-//[Authorize]
-//public async Task<IActionResult> Courses()
-//{
-//    var viewModel = new CoursesViewModel();
-//    var response = await _httpClient.GetAsync("https://localhost:7086/api/Course");
-
-//    if (response.IsSuccessStatusCode)
-//    {
-//        viewModel.CourseModels = await response.Content.ReadAsAsync<IEnumerable<CourseModel>>();
-//    }
-
-//    return View(viewModel);
-//}
-
-
-
-
-
-//  var tokenResponse = await _httpClient.SendAsync(new HttpRequestMessage 
-//  {
-//      RequestUri = new Uri("https://localhost:7086/api/auth"),
-//      Method = HttpMethod.Post
-//  });
-//  if (tokenResponse.IsSuccessStatusCode)
-//  {
-//      HttpContext.Session.SetString("token", await tokenResponse.Content.ReadAsStringAsync()); 
-//  }
-
-
-
-
-//_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));

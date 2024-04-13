@@ -23,7 +23,7 @@ public class SingleCourseController : Controller
         if (response.IsSuccessStatusCode)
         {
             var course = JsonConvert.DeserializeObject<CourseModel>(await response.Content.ReadAsStringAsync());
-            viewModel.CourseModels = [course];
+            viewModel.CourseModel = [course];
             return View(viewModel);
         }
         else

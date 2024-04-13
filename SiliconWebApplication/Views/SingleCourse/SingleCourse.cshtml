@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/css/SingleCourse.css" asp-append-version="true" />
 
 
-<section class="courseImage" style="background-image: url('/Images/@Model.CourseModels.FirstOrDefault()?.ImageName')">
+<section class="courseImage" style="background-image: url('/Images/@Model.CourseModel.FirstOrDefault()?.ImageName')">
 
 
         <div class="container">
@@ -18,7 +18,7 @@
                 <img src="~/Images/rightArrow.svg" alt="">
                 <span class="text-s">Courses</span>
                 <img src="~/Images/rightArrow.svg" alt="">
-            <span class="text-s">@Model.CourseModels.FirstOrDefault()?.Title</span>
+            <span class="text-s">@Model.CourseModel.FirstOrDefault()?.Title</span>
             </div>
             <div class="buttons">
                 <a><span class="text-s">Best Seller</span></a>
@@ -26,7 +26,7 @@
             </div>
             <div class="fullstack">
           
-            <h1>@Model.CourseModels.FirstOrDefault()?.Title</h1>
+            <h1>@Model.CourseModel.FirstOrDefault()?.Title</h1>
 
                 <p>Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
                 <img src="~/Images/meta.svg" alt="">
@@ -36,7 +36,7 @@
                 <img src="~/Images/albert.svg" alt="">
                 <div class="span">
                     <p>Created by</p>
-                <span class="text-s">@Model.CourseModels.FirstOrDefault()?.Author</span>
+                <span class="text-s">@Model.CourseModel.FirstOrDefault()?.Author</span>
                 </div>
 
             </div>
