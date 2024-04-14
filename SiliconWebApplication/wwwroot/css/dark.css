@@ -172,9 +172,6 @@ body #contact {
 /*------ CONTACT ----------*/
 
 
-body #contact-us{
-    background-color: #090909;
-}
 
 .getContact{
     color:#090909;
@@ -182,3 +179,5 @@ body #contact-us{
 .getContact h3{
     color: #090909;
 }
+
+

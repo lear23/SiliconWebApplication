@@ -13,7 +13,15 @@
 {
     <header>
         <div class="container">
-            <a id="logo" asp-controller="Home" asp-action="Home"><img src="@Url.Content("~/images/logoSilcicon.svg")" alt=""></a>
+            @if (isDark)
+            {
+                <a id="logo" asp-controller="Home" asp-action="Home"><img src="@Url.Content("~/images/outlineDark.svg")" alt=""></a>
+            }
+            else
+            {
+                <a id="logo" asp-controller="Home" asp-action="Home"><img src="@Url.Content("~/images/logoSilcicon.svg")" alt=""></a>
+            }
+           
             <div id="menu">
                 <nav>
                     <a  asp-fragment="_Showcase.cshtml" asp-action="Home" class="menu-link">Overview</a>
@@ -35,7 +43,7 @@
             </div>
 
             <a href="/account/details">
-                <img src="~/uploads/@user.ProfilImage" alt="avatar">
+                <img class="avatar-img" src="~/uploads/@user.ProfilImage" alt="avatar">
             </a>
            
         </div>
@@ -46,7 +54,16 @@ else
 {
     <header>
         <div class="container">
-            <a id="logo" asp-controller="Home" asp-action="Home"><img src="@Url.Content("~/images/logoSilcicon.svg")" alt=""></a>
+
+            @if (isDark)
+            {
+                <a id="logo" asp-controller="Home" asp-action="Home"><img src="@Url.Content("~/images/outlineDark.svg")" alt=""></a>
+            }
+            else
+            {
+                <a id="logo" asp-controller="Home" asp-action="Home"><img src="@Url.Content("~/images/logoSilcicon.svg")" alt=""></a>
+            }
+         
 
             <div id="menu">
                 <nav>

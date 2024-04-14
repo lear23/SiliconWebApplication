@@ -1,5 +1,5 @@
-﻿ Html body #contact-us {
-    background-color: #F3F6FF;
+﻿body.wrapper #contact-us {
+    background-color: #f3f6ff;
 }
 
 main {
@@ -52,11 +52,6 @@ main {
 }
 
 
-
-
-
-
-
 .getContact {
     position: absolute;
     right: 0;
@@ -88,7 +83,7 @@ main {
 .getContact .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px; /* Reducido el espacio entre los grupos */
+    margin-bottom: 20px; 
 }
 
 .getContact input[type="text"],
@@ -165,102 +160,3 @@ main {
     .dropdown:hover .dropbtn::placeholder {
         color: #fff;
     }
-
-
-/*.getContact {
-    position: absolute;
-    right: 0;
-    top: 60px;
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    height: auto;
-    padding: 70px 60px;
-    background-color: #fff !important;
-    border: 1px solid transparent;
-    border-radius: 12px;
-    box-shadow: #fefefe;
-}
-
-@media (max-width: 972px) {
-    .getContact {
-        position: static;
-        width: 100%;
-        margin: 20px;
-    }
-}
-
-.getContact form {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-box {
-    display: flex;
-    flex-direction: column;
-}
-
-    .contact-box input {
-        width: 100%;
-        border-radius: 8px;
-        border: 2px solid rgb(238, 238, 238);
-        padding: 10px;
-        margin-bottom: 40px;
-    }
-
-    .contact-box textarea {
-        margin-bottom: 60px;
-        resize: none;
-        border-radius: 8px;
-        border: 2px solid rgb(238, 238, 238);
-        padding: 10px;
-    }*/
-/* ---------------------------------- */
-
-
-/*.dropbtn {
-    width: 100%;
-    border-radius: 8px;
-    background-color: #ffffff;
-    border: 2px solid rgb(238, 238, 238);
-    padding: 10px;
-    margin-bottom: 20px;
-  
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #f3f6f9;
-}
-
-    .dropdown:hover .dropbtn::placeholder {
-        color: #fff;
-    }*/
-/*#6366F1*/

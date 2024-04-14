@@ -32,7 +32,7 @@ public class SecurityController : Controller
             return RedirectToAction("Login", "Account");
         }
 
-        var viewModel = new AccountSecurityViewModel
+        var viewModel = new AccountDetailsViewModel
         {
             ProfileInfo = new ProfileInfoViewModel
             {
