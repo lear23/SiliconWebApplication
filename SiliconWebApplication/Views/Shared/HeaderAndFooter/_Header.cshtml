@@ -1,10 +1,12 @@
-﻿@inject SignInManager<UserEntity> _signInManager
+﻿@* @inject SignInManager<UserEntity> _signInManager *@
 
 @{    
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "Light";
     var isDark = (themeMode == "dark") ? true : false;
   
+    var user = await UserManager.GetUserAsync(User);
 }
+
 
 
 @if (_signInManager.IsSignedIn(User))
@@ -33,10 +35,11 @@
             </div>
 
             <a href="/account/details">
-                <img src="~/Images/avatarimage.svg" alt="Go to account details">
+                <img src="~/uploads/@user.ProfilImage" alt="avatar">
             </a>
-         
+           
         </div>
+       
     </header>
 }
 else

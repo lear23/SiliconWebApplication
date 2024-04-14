@@ -10,10 +10,11 @@ namespace SiliconWebApplication.Controllers;
 
 [Authorize] //Det gör att man måste vara inloggad för att få tillgång till sidan
 
-public class AccountController(UserManager<UserEntity> userManager, AddressServices addressServices) : Controller
+public class AccountController(UserManager<UserEntity> userManager, AddressServices addressServices, AccountService accountServices) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly AddressServices _addressServices = addressServices;
+    private readonly AccountService _accountServices = accountServices;
 
 
     #region Details
@@ -117,9 +118,20 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
 
         return View(viewModel);
 }
-#endregion
+    #endregion
 
-private async Task<ProfileInfoViewModel> PopulateProfilInfoAsync()
+    #region UploadImage
+    [HttpPost]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        
+        var result= await  _accountServices.UploadUserImageAsync(User, file);
+
+        return RedirectToAction("Details", "Account");
+    }
+    #endregion
+
+    private async Task<ProfileInfoViewModel> PopulateProfilInfoAsync()
     {
         var user = await _userManager.GetUserAsync(User);
 
@@ -172,6 +184,12 @@ private async Task<ProfileInfoViewModel> PopulateProfilInfoAsync()
         // Om användaren är null eller address är null, returnera en tom AddressViewModel
         return new AddressViewModel();
     }
+
+
+
+
+
+
 
 
 }

@@ -35,10 +35,58 @@
     }
 }
 
-
+/*
 .min-profil, a{
     padding-left:12px;
+}*/
+.min-profil {
+    position:relative;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+   
 }
+
+.avatar-container {
+    width: 100px; 
+    height: 100px; 
+    overflow: hidden; 
+    border-radius: 50%;
+}
+    .min-profil .avatar-container img {
+        width: 100%; 
+        height: auto;
+        display: block;
+    }
+
+
+    .min-profil form {
+        position: absolute;
+        top: 50px;
+        right: 70px;
+        margin-left: 5px;
+        border-radius:150px;
+        background-color: #EFF9FC;
+    }
+@media (max-width: 792px) {
+    .min-profil form {
+        position: relative;
+        top: 0px;
+        right: 250px;
+        margin-left: auto; 
+        margin-top: 10px; 
+    }
+}
+@media (max-width: 572px) {
+    .min-profil form {
+        position: relative;
+        top: -50px;
+        right: 120px;
+        margin-left: auto;
+        margin-top: 10px;
+    }
+}
+
 
 .controllers {
     display: flex;
@@ -125,7 +173,7 @@
                 opacity: 1;
             }
 }
-
+/*-------------------------------------------*/
 
 
 

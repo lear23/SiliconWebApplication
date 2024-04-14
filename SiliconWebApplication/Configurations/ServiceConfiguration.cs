@@ -10,6 +10,7 @@ public static class ServiceConfiguration
         services.AddScoped<AddressServices>();
         services.AddScoped<CategoryService>();
         services.AddScoped<CourseService>();
+        services.AddScoped<AccountService>();
     }
 
 }

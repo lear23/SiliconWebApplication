@@ -15,5 +15,9 @@ public class UserEntity : IdentityUser
     [ProtectedPersonalData]
     public string? Bio {  get; set; }
 
+    public string? ProfilImage { get; set; } = "avatar-image.svg";
+
+    public bool IsExternal { get; set; }
+
     public ICollection<AddressEntity> Addresses { get; set; } = [];
 }

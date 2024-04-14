@@ -164,6 +164,27 @@ function updateCourseByFilter() {
 
 
 
-//-----------------PAGINATION----------------------------
+//-----------------UPLOADFIL----------------------------
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    ProfileImageUpload()
+
+})
+
+function ProfileImageUpload() {
+    try {
+        let UploadFile = document.querySelector('#UploadFile')
+
+        if (UploadFile != undefined) {
+            UploadFile.addEventListener('change', function () {
+                if (this.files.length > 0)
+                    this.form.submit()
+            })
+        }
 
 
+    } catch {
+        console.error(error)
+    }
+}
