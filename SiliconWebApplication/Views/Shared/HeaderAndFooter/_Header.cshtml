@@ -21,17 +21,15 @@
             {
                 <a id="logo" asp-controller="Home" asp-action="Home"><img src="@Url.Content("~/images/logoSilcicon.svg")" alt=""></a>
             }
-           
+
             <div id="menu">
                 <nav>
-                    <a  asp-fragment="_Showcase.cshtml" asp-action="Home" class="menu-link">Overview</a>
+                    <a asp-fragment="_Showcase.cshtml" asp-action="Home" class="menu-link">Overview</a>
                     <a asp-fragment="_Features.cshtml" asp-action="Home" asp-controller="Home" class="menu-link">Features</a>
                     <a asp-action="Courses" asp-controller="Courses" class="menu-link">Courses</a>
                     <a asp-action="Contact" asp-controller="contact" class="menu-link">Contact</a>
-               
                 </nav>
             </div>
-
 
             <div id="theme-switch" class="btn-switch">
                 <label>Light</label>
@@ -42,14 +40,20 @@
                 <label>Dark</label>
             </div>
 
-            <a href="/account/details">
-                <img class="avatar-img" src="~/uploads/@user.ProfilImage" alt="avatar">
-            </a>
-           
+            @if (user != null)
+            {
+                <a href="/account/details">
+                    <img class="avatar-img" src="~/uploads/@user.ProfilImage" alt="avatar">
+                </a>
+            }
+            else
+            {
+                 <a asp-controller="Auth" asp-action="SignOut" class="btn-theme-s"><i class="fa-sharp fa-regular fa-arrow-right-from-bracket"></i><span style="color:#ffffff">Sign out</span></a>
+            }
         </div>
-       
     </header>
 }
+
 else
 {
     <header>

@@ -181,3 +181,14 @@ body #contact {
 }
 
 
+/*------AccountDetils----------*/
+
+
+.controllers .btn-trans {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #fff;
+}

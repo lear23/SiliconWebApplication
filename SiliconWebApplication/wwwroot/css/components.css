@@ -410,6 +410,9 @@ a {
 .red {
     color: red;
 }
+.h6gray {
+    color: rgb(215, 215, 215);
+}
 .gray {
     position: relative; 
     color: rgb(215, 215, 215);

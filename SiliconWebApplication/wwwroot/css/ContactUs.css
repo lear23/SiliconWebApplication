@@ -108,7 +108,7 @@ main {
     color:#fff;
     border: 2px solid #eee;
     padding: 10px;
-    margin-top: 10px; /* Reducido el espacio entre el último campo y el botón */
+    margin-top: 10px; 
 }
 
     .getContact button:hover {
