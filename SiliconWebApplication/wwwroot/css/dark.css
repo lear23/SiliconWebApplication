@@ -1,6 +1,6 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 
-html, body {
+html, body , main, section{
     line-height: 160%;
     font-weight: 400;
     color: #565973;
@@ -96,6 +96,7 @@ h6, .h6 {
     height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    
 }
 
 /*------ LINK ----------*/
@@ -145,7 +146,7 @@ a {
 /*------ LAPTOP----------*/
 
 .laptop-image {
-    /* background: linear-gradient(to right, rgb(0, 0, 0) 50%, rgb(252, 251, 251) 50%);*/
+   
     background-color: #090909;
     padding: 60px;
 }
@@ -164,13 +165,19 @@ a {
 }
 
 
-body #contact {
+#contact {
     background-color: #090909;
 }
 
 
 /*------ CONTACT ----------*/
 
+.sectionContact h3 {
+    background-color: #090909; /* Establece el fondo oscuro */
+    color: #FFFFFF; /* Establece el color del texto */
+    padding: 10px; /* Agrega un poco de espacio alrededor del texto */
+    border-radius: 8px; /* Agrega esquinas redondeadas */
+}
 
 
 .getContact{
