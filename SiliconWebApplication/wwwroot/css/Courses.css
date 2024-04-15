@@ -116,6 +116,7 @@
 
         .select .selected:hover {
             background-color: #f0f0f0;
+            color:#090909;
         }
 
     .select.active .select-options {

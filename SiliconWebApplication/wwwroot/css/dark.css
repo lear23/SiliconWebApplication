@@ -199,3 +199,23 @@ a {
     border-radius: 8px;
     color: #fff;
 }
+
+/*----------------Courses-------------------*/
+
+
+.select-options{
+    color: #090909;
+}
+.work1 .text-lead{
+    color:#090909;
+}
+.work1 h1 {
+    color: #090909;
+}
+
+
+.btn-switch label {
+    
+    color: #fff;
+   
+}
