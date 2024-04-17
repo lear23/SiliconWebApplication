@@ -171,32 +171,31 @@ a {
 
 
 /*------ CONTACT ----------*/
-
+body header{
+    background-color: #090909;
+}
+/*
 .sectionContact h3 {
-    background-color: #090909; /* Establece el fondo oscuro */
-    color: #FFFFFF; /* Establece el color del texto */
-    padding: 10px; /* Agrega un poco de espacio alrededor del texto */
-    border-radius: 8px; /* Agrega esquinas redondeadas */
+    background-color: #090909;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 
-.getContact{
-    color:#090909;
-}
-.getContact h3{
+.getContact {
     color: #090909;
 }
 
+    .getContact h3 {
+        color: #090909;
+    }*/
 
 /*------AccountDetils----------*/
 
 
-.controllers .btn-trans {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    padding: 8px 12px;
-    border-radius: 8px;
+.controllers .btn-trans span {
+ 
     color: #fff;
 }
 

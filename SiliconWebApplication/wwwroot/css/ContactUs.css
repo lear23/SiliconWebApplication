@@ -1,4 +1,6 @@
-﻿
+﻿body {
+    background-color: #eff0fc;
+}
 
 main {
     position: relative;
