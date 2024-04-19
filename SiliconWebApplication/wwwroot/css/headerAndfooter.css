@@ -129,7 +129,7 @@ header .container .account-buttons {
     width: 50px;
     height: auto; 
 }
-@media screen and (max-width:992px) {
+/*@media screen and (max-width:992px) {
     .avatar-img {
         display: none;
     }
@@ -138,7 +138,7 @@ header .container .account-buttons {
         display: none;
     }
 }
-
+*/
 
 
 

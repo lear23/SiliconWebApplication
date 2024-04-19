@@ -174,22 +174,7 @@ a {
 body header{
     background-color: #090909;
 }
-/*
-.sectionContact h3 {
-    background-color: #090909;
-    color: #FFFFFF;
-    padding: 10px;
-    border-radius: 8px;
-}
 
-
-.getContact {
-    color: #090909;
-}
-
-    .getContact h3 {
-        color: #090909;
-    }*/
 
 /*------AccountDetils----------*/
 
@@ -218,3 +203,23 @@ body header{
     color: #fff;
    
 }
+
+/*------------------------------------------*/
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+ 
+    gap: 1rem;
+    list-style-type: none;
+    padding: 0;
+}
+
+    .nav-list li a {
+        text-decoration: none;
+        background-color: #a7aae3;
+        color: #090909;
+        font-weight: 800;
+        border-radius:8px;
+        padding:8px 12px;
+    }
