@@ -310,6 +310,16 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+.tools {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding:10px;
+}
+
+    .tools:hover {
+        transform: translateY(-5px); 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+        border-radius:8px;
+    }
 
 .tools img {
     padding-bottom: 30px;
